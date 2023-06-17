@@ -23,10 +23,7 @@ def create_todo():
     title = data.get('title')
     description = data.get('description')
     state = 'new'
-
-    print("title ", title)
-    print("description ", description)
-    new_user = Task(title=title, description=description, state=state)
+    new_user = Task(title, description, state)
 
     db.session.add(new_user)
     db.session.commit()
