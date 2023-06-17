@@ -4,15 +4,17 @@ from sqlalchemy import text
 from routes import tasks
 from models import db
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.register_blueprint(tasks)
-
 app.debug = True
 
 load_dotenv()
 dbConnectionString = os.getenv("DB_CONNECTION_STRING")
 app.config['SQLALCHEMY_DATABASE_URI'] = dbConnectionString
+
 db.init_app(app)
 
 
